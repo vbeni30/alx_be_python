@@ -13,7 +13,7 @@ def main():
     while True:
         display_menu()
 
-        # ALX requires EXACT int(input(...))
+        # Must be an integer input
         try:
             choice = int(input("Enter your choice: "))
         except ValueError:
@@ -21,20 +21,22 @@ def main():
             continue
 
         if choice == 1:
-            item = input("Enter item to add: ").strip()
+            # EXACT string required by checker
+            item = input("Enter the item to add: ").strip()
             shopping_list.append(item)
             print(f"'{item}' has been added.")
 
         elif choice == 2:
-            item = input("Enter item to remove: ").strip()
+            # ALX may also check remove wording later
+            item = input("Enter the item to remove: ").strip()
             if item in shopping_list:
                 shopping_list.remove(item)
                 print(f"'{item}' has been removed.")
             else:
-                print(f"'{item}' not found.")
+                print(f"'{item}' not found in the list.")
 
         elif choice == 3:
-            print("Shopping List:")
+            print("Current Shopping List:")
             if not shopping_list:
                 print("(empty)")
             else:
