@@ -8,15 +8,14 @@ def display_menu():
     print("4. Exit")
 
 def main():
-    shopping_list = []   # required array
+    shopping_list = []
 
     while True:
-        display_menu()   # must be called
-        choice_input = input("Enter your choice: ")
+        display_menu()
 
-        # ALX checker wants numeric choice
+        # ALX requires EXACT int(input(...))
         try:
-            choice = int(choice_input)
+            choice = int(input("Enter your choice: "))
         except ValueError:
             print("Invalid choice. Please enter a number.")
             continue
@@ -24,30 +23,30 @@ def main():
         if choice == 1:
             item = input("Enter item to add: ").strip()
             shopping_list.append(item)
-            print(f"'{item}' added to the list.")
+            print(f"'{item}' has been added.")
 
         elif choice == 2:
             item = input("Enter item to remove: ").strip()
             if item in shopping_list:
                 shopping_list.remove(item)
-                print(f"'{item}' removed from the list.")
+                print(f"'{item}' has been removed.")
             else:
-                print(f"'{item}' not found in the list.")
+                print(f"'{item}' not found.")
 
         elif choice == 3:
-            print("Current Shopping List:")
-            if len(shopping_list) == 0:
+            print("Shopping List:")
+            if not shopping_list:
                 print("(empty)")
             else:
-                for i, item in enumerate(shopping_list, 1):
-                    print(f"{i}. {item}")
+                for index, item in enumerate(shopping_list, 1):
+                    print(f"{index}. {item}")
 
         elif choice == 4:
             print("Goodbye!")
             break
 
         else:
-            print("Invalid choice. Please try again.")
+            print("Invalid choice. Try again.")
 
 if __name__ == "__main__":
     main()
